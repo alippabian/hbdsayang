@@ -3,38 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday</title>
+  <title>Birthday Magic</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background lantern -->
-  <div class="lanterns"></div>
+  <!-- Background -->
+  <div class="background"></div>
+
+  <!-- Lanterns -->
+  <div class="lantern-container"></div>
 
   <div class="container">
-    <h1 id="title">Happy Birthday</h1>
-    <h2 id="name">For You 💜</h2>
-    <p id="message">Semoga semua impianmu menjadi nyata ✨</p>
+    <h1 class="title">Happy Birthday ✨</h1>
+    <h2 class="name">For You 💜</h2>
+    <p class="message">Make a wish under the floating lights...</p>
 
-    <!-- Cake -->
+    <!-- 3D Cake -->
     <div class="cake">
-      <div class="candle" onclick="blowCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="blowCandle(this)">
-        <div class="flame"></div>
-      </div>
-      <div class="candle" onclick="blowCandle(this)">
-        <div class="flame"></div>
+      <div class="layer bottom"></div>
+      <div class="layer middle"></div>
+      <div class="layer top"></div>
+
+      <!-- Candles -->
+      <div class="candles">
+        <div class="candle" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blow(this)"><div class="flame"></div></div>
       </div>
     </div>
-
-    <button onclick="toggleMusic()">🎵 Music</button>
   </div>
 
-  <!-- Audio -->
-  <audio id="music" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  <!-- Music autoplay -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/6r2n6v.mp3" type="audio/mp3">
   </audio>
 
   <canvas id="confetti"></canvas>
