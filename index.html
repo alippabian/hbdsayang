@@ -14,56 +14,56 @@ body {
   background: black;
 }
 
-/* 📸 POLAROID STYLE */
-.gallery {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+/* 📸 SIDE GALLERY */
+.side-gallery {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 }
 
+/* kiri */
+.side-gallery.left {
+  left: 5%;
+}
+
+/* kanan */
+.side-gallery.right {
+  right: 5%;
+}
+
+/* polaroid style */
 .polaroid {
   background: white;
   padding: 10px 10px 25px;
-  width: 180px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  transform: rotate(-5deg);
+  width: 160px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  border-radius: 6px;
+  transform: rotate(-6deg);
   transition: 0.4s;
-  border-radius: 5px;
 }
 
-.polaroid:nth-child(2) {
-  transform: rotate(5deg);
+.side-gallery.right .polaroid {
+  transform: rotate(6deg);
 }
 
 .polaroid:hover {
   transform: scale(1.1) rotate(0deg);
 }
 
+/* gambar */
 .polaroid img {
   width: 100%;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
+/* caption */
 .polaroid p {
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
+  text-align: center;
   margin-top: 8px;
   font-family: cursive;
-}
-
-/* ✨ glow effect (biar nyatu sama tema Tangled) */
-.polaroid::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-  border-radius: 5px;
-  pointer-events: none;
 }
 
 /* 🌌 SKY */
@@ -225,14 +225,16 @@ body {
   <p>Tonight, the sky shines just for you...</p>
 
   <div class="cake">
-    <div class="gallery">
+    <div class="side-gallery left">
       <div class="polaroid">
-        <img src="foto1.jpeg">
+        <img src="./foto1.jpeg">
         <p>Our Moment 💜</p>
       </div>
+    </div>
 
+    <div class="side-gallery right">
       <div class="polaroid">
-        <img src="foto2.jpeg">
+        <img src="./foto2.jpeg">
         <p>Beautiful Memory ✨</p>
       </div>
     </div>
