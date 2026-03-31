@@ -8,62 +8,10 @@
 <style>
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
   color: white;
   background: black;
-}
-
-/* 📸 SIDE GALLERY */
-.side-gallery {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-/* kiri */
-.side-gallery.left {
-  left: 5%;
-}
-
-/* kanan */
-.side-gallery.right {
-  right: 5%;
-}
-
-/* polaroid style */
-.polaroid {
-  background: white;
-  padding: 10px 10px 25px;
-  width: 160px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-  border-radius: 6px;
-  transform: rotate(-6deg);
-  transition: 0.4s;
-}
-
-.side-gallery.right .polaroid {
-  transform: rotate(6deg);
-}
-
-.polaroid:hover {
-  transform: scale(1.1) rotate(0deg);
-}
-
-/* gambar */
-.polaroid img {
-  width: 100%;
-  border-radius: 4px;
-}
-
-/* caption */
-.polaroid p {
-  color: #333;
-  font-size: 13px;
-  text-align: center;
-  margin-top: 8px;
-  font-family: cursive;
 }
 
 /* 🌌 SKY */
@@ -99,7 +47,6 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 25px rgba(255, 200, 0, 0.9);
   animation: float linear infinite;
-  filter: blur(0.2px);
 }
 
 @keyframes float {
@@ -149,7 +96,7 @@ body {
   color: gold;
 }
 
-/* 🎂 CAKE CINEMATIC */
+/* 🎂 CAKE */
 .cake {
   margin: 60px auto;
   width: 220px;
@@ -211,6 +158,60 @@ body {
   opacity: 0;
   transition: 1s;
 }
+
+/* 📸 SIDE GALLERY */
+.side-gallery {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.side-gallery.left { left: 8%; }
+.side-gallery.right { right: 8%; }
+
+/* POLAROID */
+.polaroid {
+  background: white;
+  padding: 10px 10px 25px;
+  width: 160px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  border-radius: 6px;
+  transform: rotate(-6deg);
+  transition: 0.4s;
+}
+
+.side-gallery.right .polaroid {
+  transform: rotate(6deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.1) rotate(0deg);
+}
+
+.polaroid img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.polaroid p {
+  color: #333;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 8px;
+  font-family: cursive;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .side-gallery {
+    position: static;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
 </style>
 </head>
 
@@ -225,19 +226,6 @@ body {
   <p>Tonight, the sky shines just for you...</p>
 
   <div class="cake">
-    <div class="side-gallery left">
-      <div class="polaroid">
-        <img src="./foto1.jpeg">
-        <p>Our Moment 💜</p>
-      </div>
-    </div>
-
-    <div class="side-gallery right">
-      <div class="polaroid">
-        <img src="./foto2.jpeg">
-        <p>Beautiful Memory ✨</p>
-      </div>
-    </div>
     <div class="candles">
       <div class="candle" onclick="blow(this)"><div class="flame"></div></div>
       <div class="candle" onclick="blow(this)"><div class="flame"></div></div>
@@ -247,6 +235,21 @@ body {
     <div class="layer top"></div>
     <div class="layer middle"></div>
     <div class="layer bottom"></div>
+  </div>
+</div>
+
+<!-- 📸 PINDAH KE LUAR CONTAINER -->
+<div class="side-gallery left">
+  <div class="polaroid">
+    <img src="./foto1.jpeg">
+    <p>Our Moment 💜</p>
+  </div>
+</div>
+
+<div class="side-gallery right">
+  <div class="polaroid">
+    <img src="./foto2.jpeg">
+    <p>Beautiful Memory ✨</p>
   </div>
 </div>
 
@@ -286,15 +289,14 @@ function blow(el) {
   }
 
   if (count === 3) {
-    let text = document.getElementById("magicText");
-    text.style.opacity = 1;
+    document.getElementById("magicText").style.opacity = 1;
   }
 }
 
 /* 🎵 AUTOPLAY FIX */
-document.body.addEventListener("click", () => {
+document.addEventListener("click", () => {
   document.getElementById("music").play();
-});
+}, { once: true });
 </script>
 
 </body>
