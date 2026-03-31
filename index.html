@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Magical Birthday</title>
 
+<!-- 🌸 GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: white;
   background: #2b0a3d;
 }
 
-/* 🌌 ULTRA CINEMATIC SKY */
+/* 🌌 SKY CINEMATIC */
 .sky {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: -5;
@@ -28,14 +29,12 @@ body {
     linear-gradient(180deg, #2b0a3d 0%, #5a189a 50%, #240046 100%);
 }
 
-/* 🌫️ GLOW ATMOSPHERE */
 .sky::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(circle at 50% 60%, rgba(255,200,100,0.08), transparent 60%);
+  background: radial-gradient(circle at 50% 60%, rgba(255,200,100,0.08), transparent 60%);
 }
 
 /* ✨ STARS */
@@ -53,7 +52,7 @@ body {
   to {opacity: 1;}
 }
 
-/* 🏮 LANTERN BASE */
+/* 🏮 LANTERN */
 .lantern {
   position: absolute;
   width: 18px;
@@ -64,7 +63,6 @@ body {
   animation: float linear infinite;
 }
 
-/* 🏮 DEPTH VARIATION */
 .lantern.far {
   transform: scale(0.6);
   opacity: 0.4;
@@ -82,7 +80,6 @@ body {
   box-shadow: 0 0 35px rgba(255, 200, 0, 1);
 }
 
-/* FLOAT ANIMATION */
 @keyframes float {
   0% {transform: translateY(100vh) translateX(0);}
   50% {transform: translateY(50vh) translateX(40px);}
@@ -109,14 +106,27 @@ body {
   100% {opacity: 0; visibility: hidden;}
 }
 
-/* TEXT */
+/* 📝 TEXT */
 .container {
   text-align: center;
   margin-top: 15vh;
 }
 
-.title { font-size: 3rem; }
-.name { color: gold; }
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  text-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+
+.name {
+  font-family: 'Playfair Display', serif;
+  color: gold;
+  font-size: 1.5rem;
+}
+
+.container p {
+  font-weight: 300;
+}
 
 /* 🎂 CAKE */
 .cake {
@@ -170,7 +180,7 @@ body {
   100% {transform: scale(1);}
 }
 
-/* 📸 SIDE PHOTO */
+/* 📸 FOTO */
 .side-gallery {
   position: fixed;
   top: 50%;
@@ -193,13 +203,15 @@ body {
 .right .polaroid { transform: rotate(6deg); }
 
 .polaroid img { width: 100%; }
+
 .polaroid p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 16px;
   color: #333;
   text-align: center;
-  font-family: cursive;
 }
 
-/* ✨ MAGIC TEXT */
+/* ✨ MAGIC */
 .magic {
   position: fixed;
   width: 100%;
@@ -256,7 +268,6 @@ body {
 </audio>
 
 <script>
-/* STARS */
 for (let i = 0; i < 80; i++) {
   let s = document.createElement("div");
   s.className = "star";
@@ -265,22 +276,15 @@ for (let i = 0; i < 80; i++) {
   document.body.appendChild(s);
 }
 
-/* LANTERN DEPTH SYSTEM */
 for (let i = 0; i < 40; i++) {
   let l = document.createElement("div");
   let type = Math.random();
-
-  if (type < 0.3) l.className = "lantern far";
-  else if (type < 0.7) l.className = "lantern mid";
-  else l.className = "lantern near";
-
+  l.className = type < 0.3 ? "lantern far" : type < 0.7 ? "lantern mid" : "lantern near";
   l.style.left = Math.random()*100 + "vw";
   l.style.animationDuration = (8 + Math.random()*10) + "s";
-
   document.body.appendChild(l);
 }
 
-/* CANDLE */
 let count = 0;
 function blow(el) {
   let f = el.querySelector(".flame");
@@ -293,7 +297,6 @@ function blow(el) {
   }
 }
 
-/* AUTOPLAY FIX */
 document.addEventListener("click", () => {
   document.getElementById("music").play();
 }, { once: true });
